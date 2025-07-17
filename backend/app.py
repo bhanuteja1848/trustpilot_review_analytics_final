@@ -26,7 +26,14 @@ init_db()
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "DELETE", "OPTIONS"]}})
+#CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "DELETE", "OPTIONS"]}})
+# Update CORS to allow only Vercel frontend
+CORS(app, origins=["https://trustpilot-review-analytics.vercel.app"])
+
+# Serve favicon.ico for browser compatibility
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, ''), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 # Initialize sentiment analyzer
 sentiment_analyzer = SentimentAnalyzer()
