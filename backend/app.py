@@ -28,7 +28,7 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 #CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "DELETE", "OPTIONS"]}})
 # Update CORS to allow only Vercel frontend
-CORS(app, origins=["https://trustpilot-review-analytics.vercel.app"])
+CORS(app, origins=["https://trustpilotreviewanalyticsfinal-production.up.railway.app"])
 
 # Serve favicon.ico for browser compatibility
 @app.route('/favicon.ico')
