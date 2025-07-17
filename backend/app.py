@@ -336,7 +336,7 @@ def scrape_brand_api():
         logger.info('Starting scraper...')
         scraper = TrustpilotScraper(headless=True)
         new_reviews_count = scraper.scrape_brand_reviews(brand, max_pages=3)
-        logger.info('Scraper finished. new_reviews_count:', new_reviews_count)
+        logger.info(f"Scraper finished. new_reviews_count: {new_reviews_count}")
         if new_reviews_count is None:
             new_reviews_count = 0
         logger.info('Browser closed.')
